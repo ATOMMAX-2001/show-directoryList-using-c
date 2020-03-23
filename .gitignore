@@ -1,52 +1,24 @@
-# Prerequisites
-*.d
+#include<sys/stat.h>
+#include<sys/types.h>
+#include<dirent.h>
+#include<stdio.h>
+#include<time.h>
+#include<stdlib.h>
+int main(int c,int arg[])
+{
+    char s[100];
+    printf("ENTER THE PATH:\t");
+    scanf("%s",&s);
+    DIR *d;    struct dirent *r;
+    int i=0;
+    d=opendir(s);
+    printf("\n\tNAME OF THE ITEM\n");
+    while((r=readdir(d))!=NULL)
+    {
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+        printf("\t%s\n",r->d_name);
+        i+=1;
+    }
+    printf("\nTOTAL NUMBER OF ITEM IN THAT DIRECTORY IS %d\n",i);
 
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+}
